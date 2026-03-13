@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -73,19 +76,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
-        /* Glow-Effekt Abstufungen */
-        .glow-schwach {
-            box-shadow: 0 0 10px 3px rgba(62, 146, 204, 0.3);
-        }
-        
-        .glow-mittel {
-            box-shadow: 0 0 20px 6px rgba(62, 146, 204, 0.6);
-        }
-        
-        .glow-stark {
-            box-shadow: 0 0 30px 10px #3e92cc;
-        }
-
         .carousel-header {
             background: linear-gradient(135deg, #3e92cc 0%, #1a5f8a 100%);
             color: white;
@@ -104,32 +94,41 @@
             font-size: 0.9rem;
         }
 
-        .carousel-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
         .carousel-body {
             padding: 1.2rem;
             flex-grow: 1;
             background: #f9f9f9;
         }
 
-        .carousel-body p {
+        .carousel-body ul {
+            list-style: none;
+            padding: 0;
             margin: 0;
-            line-height: 1.5;
-            color: #333;
+        }
+
+        .carousel-body li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
             font-size: 0.95rem;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .carousel-body li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3e92cc;
+            font-weight: bold;
         }
 
         .carousel-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            padding: 1rem 1.2rem 1.2rem;
-            background: #f9f9f9;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid #e0e0e0;
         }
 
@@ -216,6 +215,65 @@
                 font-size: 1rem;
             }
         }
+        
+        /* Projekt-Zusammenfassung */
+        .project-summary {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #3e92cc;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .summary-item {
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .badge {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .badge-green {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-blue {
+            background: #3e92cc;
+            color: white;
+        }
+        
+        .badge-yellow {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .badge-gray {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .summary-footer {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -226,116 +284,140 @@
         <div class="projects-carousel">
             <div class="carousel-container" id="projectCarousel">
                 
-                <!-- Slide 1: Smart Home (mit glow-schwach) -->
-                <div class="carousel-slide" data-i18n="project_smarthome">
-                    <div class="project-card-carousel glow-schwach">
+                <!-- Slide 1: KI-Studium -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="smarthome_title">Smart Home 🏠</h3>
-                            <p data-i18n="smarthome_period">2022-2024 · Privatprojekt 1%</p>
+                            <h3>🧠 KI-Studium</h3>
+                            <p>seit 09/2024 - laufend</p>
                         </div>
-                        <img src="images/smarthome.png" alt="Smart Home" class="carousel-image" data-i18n-alt="smarthome_alt">
                         <div class="carousel-body">
-                            <p data-i18n="smarthome_desc">Selbstständige Renovierung, Integration neuer Technologien, Planung über Videokonferenzen (Teams, Zoom) und Koordination via Social Media (YouTube, WhatsApp, Facebook).</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_iot">IoT</span>
-                            <span class="carousel-tag" data-i18n="tag_smarthome">Smart Home</span>
-                            <span class="carousel-tag" data-i18n="tag_renovation">Renovierung</span>
+                            <ul>
+                                <li>Sprachmodelle & Transformer</li>
+                                <li>Neuronale Netzarchitekturen</li>
+                                <li>Multimodale KI-Systeme</li>
+                                <li>Training von KI-Modellen</li>
+                                <li>Retrieval & Vektordatenbanken</li>
+                                <li>KI-Deployment & Container</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">80% Schwerpunkt</span>
+                                <span class="carousel-tag">Strategisch</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Slide 2: KI-Studium (mit glow-stark) -->
-                <div class="carousel-slide" data-i18n="project_kistudium">
-                    <div class="project-card-carousel glow-stark">
+                <!-- Slide 2: Manus KI-Agent -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="kistudium_title">🧠 KI-Studium</h3>
-                            <p data-i18n="kistudium_period">seit 09/2024 · Schwerpunkt 80%</p>
+                            <h3>⚡ Manus KI-Agent</h3>
+                            <p>2025 - 100% Umsetzung</p>
                         </div>
-                        <img src="images/kistudium.png" alt="KI-Studium" class="carousel-image" data-i18n-alt="kistudium_alt">
                         <div class="carousel-body">
-                            <p data-i18n="kistudium_desc">Mathematische Grundlagen, Neuronale Netze, Transformer-Architekturen, Machine Learning, Systemverständnis.</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_ml">Machine Learning</span>
-                            <span class="carousel-tag" data-i18n="tag_nn">Neuronale Netze</span>
-                            <span class="carousel-tag" data-i18n="tag_transformer">Transformer</span>
+                            <ul>
+                                <li>Erstellung dieser Webseite</li>
+                                <li>Selbstständige GitHub-Integration</li>
+                                <li>Automatisierte Erweiterungen</li>
+                                <li>KI-gestütztes Deployment</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">Manus</span>
+                                <span class="carousel-tag">GitHub</span>
+                                <span class="carousel-tag">WebDev</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Slide 3: Manus KI-Agent (mit glow-mittel) -->
-                <div class="carousel-slide" data-i18n="project_manus">
-                    <div class="project-card-carousel glow-mittel">
+                <!-- Slide 3: Text-zu-Bild (Erweiterung) -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="manus_title">⚡ Manus KI-Agent</h3>
-                            <p data-i18n="manus_period">2025 · Umsetzung 100%</p>
+                            <h3>🎨 Text-zu-Bild</h3>
+                            <p>2025-2026 (Erweiterung)</p>
                         </div>
-                        <img src="images/manus.png" alt="Manus KI-Agent" class="carousel-image" data-i18n-alt="manus_alt">
                         <div class="carousel-body">
-                            <p data-i18n="manus_desc">Erstellung dieser Webseite, selbstständige GitHub-Erweiterung, automatische Aktualisierung.</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_manus">Manus</span>
-                            <span class="carousel-tag" data-i18n="tag_github">GitHub</span>
-                            <span class="carousel-tag" data-i18n="tag_webdev">WebDev</span>
+                            <ul>
+                                <li>ControlNet Integration</li>
+                                <li>Midas Tiefenschätzung</li>
+                                <li>SAM2 Segmentierung</li>
+                                <li>100% lauffähig auf HF</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">ControlNet</span>
+                                <span class="carousel-tag">SAM2</span>
+                                <span class="carousel-tag">Midas</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Slide 4: Hugging Face (mit glow-mittel) -->
-                <div class="carousel-slide" data-i18n="project_hf">
-                    <div class="project-card-carousel glow-mittel">
+                <!-- Slide 4: Hugging Face -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="hf_title">🤗 Hugging Face</h3>
-                            <p data-i18n="hf_period">2025 · 100% lauffähig</p>
+                            <h3>🤗 Hugging Face</h3>
+                            <p>2025 - 100% lauffähig</p>
                         </div>
-                        <img src="images/huggingface.png" alt="Hugging Face" class="carousel-image" data-i18n-alt="hf_alt">
                         <div class="carousel-body">
-                            <p data-i18n="hf_desc">Text-zu-Bild und Bild-zu-Bild Generierung, Diffusion Models, Pipeline-Integration.</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_hf">Hugging Face</span>
-                            <span class="carousel-tag" data-i18n="tag_diffusion">Diffusion</span>
-                            <span class="carousel-tag" data-i18n="tag_pipeline">Pipeline</span>
+                            <ul>
+                                <li>Text-zu-Bild Generierung</li>
+                                <li>Bild-zu-Bild Translation</li>
+                                <li>Diffusion Models</li>
+                                <li>Pipeline-Integration</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">Hugging Face</span>
+                                <span class="carousel-tag">Diffusers</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Slide 5: Erweiterte Bildgenerierung (mit glow-mittel) -->
-                <div class="carousel-slide" data-i18n="project_bilderweiterung">
-                    <div class="project-card-carousel glow-mittel">
+                <!-- Slide 5: KI-Code-Agent -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="bilderweiterung_title">🎨 Erweiterte Bildgenerierung</h3>
-                            <p data-i18n="bilderweiterung_period">2025-2026 · 100% auf HF</p>
+                            <h3>💻 KI-Code-Agent</h3>
+                            <p>2024 - Grundlagen 20%</p>
                         </div>
-                        <img src="images/bilderweiterung.png" alt="Erweiterte Bildgenerierung" class="carousel-image" data-i18n-alt="bilderweiterung_alt">
                         <div class="carousel-body">
-                            <p data-i18n="bilderweiterung_desc">ControlNet, Midas Tiefenschätzung, SAM2 Segmentierung, optimierte Rechenleistung.</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_controlnet">ControlNet</span>
-                            <span class="carousel-tag" data-i18n="tag_sam2">SAM2</span>
-                            <span class="carousel-tag" data-i18n="tag_midas">Midas</span>
+                            <ul>
+                                <li>Automatisierte Code-Generierung</li>
+                                <li>Code-Änderungen</li>
+                                <li>Log-Monitoring</li>
+                                <li>Sentence Transformers</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">Python</span>
+                                <span class="carousel-tag">NLP</span>
+                                <span class="carousel-tag">20%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Slide 6: KI-Code-Agent (mit glow-schwach) -->
-                <div class="carousel-slide" data-i18n="project_codeagent">
-                    <div class="project-card-carousel glow-schwach">
+                <!-- Slide 6: Smart Home -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3 data-i18n="codeagent_title">💻 KI-Code-Agent</h3>
-                            <p data-i18n="codeagent_period">2024 · Grundlagen 20%</p>
+                            <h3>🏠 Smart Home</h3>
+                            <p>2022-2024 - Privatprojekt</p>
                         </div>
-                        <img src="images/codeagent.png" alt="KI-Code-Agent" class="carousel-image" data-i18n-alt="codeagent_alt">
                         <div class="carousel-body">
-                            <p data-i18n="codeagent_desc">Grundstruktur für Code-Generierung, automatisierte Code-Änderungen, Log-Monitoring, Erstellung auf Hugging Face.</p>
-                        </div>
-                        <div class="carousel-tags">
-                            <span class="carousel-tag" data-i18n="tag_python">Python</span>
-                            <span class="carousel-tag" data-i18n="tag_nlp">NLP</span>
-                            <span class="carousel-tag" data-i18n="tag_20">20%</span>
+                            <ul>
+                                <li>Selbstständige Renovierung</li>
+                                <li>IoT-Integration</li>
+                                <li>Videokonferenz-Planung</li>
+                                <li>Social Media Koordination</li>
+                            </ul>
+                            <div class="carousel-tags">
+                                <span class="carousel-tag">IoT</span>
+                                <span class="carousel-tag">Smart Home</span>
+                                <span class="carousel-tag">1%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,6 +436,53 @@
                 <button class="carousel-dot" onclick="currentSlide(3)"></button>
                 <button class="carousel-dot" onclick="currentSlide(4)"></button>
                 <button class="carousel-dot" onclick="currentSlide(5)"></button>
+            </div>
+        </div>
+        
+        <!-- ===== PROJEKT-ZUSAMMENFASSUNG ===== -->
+        <div class="project-summary">
+            <h3 style="margin-bottom: 1rem; color: #0a3d62;">📊 Projektübersicht & Schwerpunkte</h3>
+            <div class="summary-grid">
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">🧠 KI-Studium</span>
+                    <span style="display: block; font-size: 0.9rem;">seit 09/2024 - laufend</span>
+                    <span class="badge badge-blue">Schwerpunkt: 80%</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">⚡ Manus KI-Agent</span>
+                    <span style="display: block; font-size: 0.9rem;">2025</span>
+                    <span class="badge badge-green">Umsetzung: 100%</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">🎨 Text-zu-Bild (Erweiterung)</span>
+                    <span style="display: block; font-size: 0.9rem;">2025-2026</span>
+                    <span class="badge badge-green">100% lauffähig auf HF</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">🤗 Hugging Face</span>
+                    <span style="display: block; font-size: 0.9rem;">2025</span>
+                    <span class="badge badge-green">100% lauffähig</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">💻 KI-Code-Agent</span>
+                    <span style="display: block; font-size: 0.9rem;">2024</span>
+                    <span class="badge badge-yellow">Grundlagen: 20%</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span style="font-weight: bold; color: #0a3d62;">🏠 Smart Home</span>
+                    <span style="display: block; font-size: 0.9rem;">2022-2024</span>
+                    <span class="badge badge-gray">Privatprojekt: 1%</span>
+                </div>
+                
+            </div>
+            <div class="summary-footer">
+                🔍 Die Prozentangaben zeigen meinen strategischen Fokus: <strong>80% KI-Studium & Systemverständnis</strong>, der Rest dient der praktischen Validierung.
             </div>
         </div>
     </div>
