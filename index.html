@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmstreifen Test</title>
+    <title>Filmstreifen Test - Ein Container</title>
     <style>
         /* Basis-Styling für den Test */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 40px 20px;
-            background: #f5f5f5;
+            background: #111; /* Schwarzer Hintergrund für Glow-Effekt */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,116 +19,90 @@
         
         .test-container {
             width: 100%;
-            max-width: 1200px;
-            background: white;
+            max-width: 400px; /* Schmaler für einen Container */
+            background: #1a1a1a;
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
         h2 {
             text-align: center;
-            color: #0a3d62;
+            color: #fff;
             margin-bottom: 30px;
         }
         
-        /* ===== FILMSTREIFEN STYLES ===== */
-        .projects-carousel {
-            position: relative;
-            width: 100%;
-            margin: 2rem 0;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .carousel-slide {
-            min-width: calc(33.333% - 14px);
-            flex: 0 0 auto;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-slide:hover {
-            transform: translateY(-5px);
-        }
-
+        /* ===== CONTAINER STYLES ===== */
         .project-card-carousel {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid #e0e0e0;
-            transition: box-shadow 0.3s ease;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
-
-        .project-card-carousel:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        
+        /* Glow-Effekt Abstufungen */
+        .glow-schwach {
+            box-shadow: 0 0 10px 3px rgba(62, 146, 204, 0.3);
         }
-
+        
+        .glow-mittel {
+            box-shadow: 0 0 20px 6px rgba(62, 146, 204, 0.6);
+        }
+        
+        .glow-stark {
+            box-shadow: 0 0 30px 10px #3e92cc;
+        }
+        
         .carousel-header {
-            background: linear-gradient(135deg, #3e92cc 0%, #1a5f8a 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1f2c 100%);
             color: white;
             padding: 1.2rem;
         }
-
+        
         .carousel-header h3 {
             margin: 0;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
-
+        
         .carousel-header p {
             margin: 0.5rem 0 0 0;
-            color: rgba(255,255,255,0.9);
+            color: #aaa;
             font-size: 0.9rem;
         }
-
+        
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #333;
+        }
+        
         .carousel-body {
             padding: 1.2rem;
-            flex-grow: 1;
-            background: #f9f9f9;
+            background: #f5f5f5;
         }
-
-        .carousel-body ul {
-            list-style: none;
-            padding: 0;
+        
+        .carousel-body p {
             margin: 0;
-        }
-
-        .carousel-body li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            line-height: 1.5;
             color: #333;
+            font-size: 0.95rem;
         }
-
-        .carousel-body li:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #3e92cc;
-            font-weight: bold;
-        }
-
+        
         .carousel-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e0e0e0;
+            padding: 1rem 1.2rem 1.2rem;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd;
         }
-
+        
         .carousel-tag {
             background: #3e92cc;
             color: white;
@@ -137,394 +111,56 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
-
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-            color: #0a3d62;
-            border: 1px solid #3e92cc;
-        }
-
-        .carousel-button:hover {
-            background: #3e92cc;
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-button.prev {
-            left: 10px;
-        }
-
-        .carousel-button.next {
-            right: 10px;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .carousel-dot.active {
-            background: #3e92cc;
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 992px) {
-            .carousel-slide {
-                min-width: calc(50% - 10px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .carousel-slide {
-                min-width: calc(100% - 0px);
-            }
-            
-            .carousel-button {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-        }
         
-        /* Projekt-Zusammenfassung */
-        .project-summary {
-            margin-top: 3rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 4px solid #3e92cc;
-        }
-        
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .summary-item {
-            padding: 0.8rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .badge {
-            display: inline-block;
-            margin-top: 5px;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .badge-green {
-            background: #28a745;
-            color: white;
-        }
-        
-        .badge-blue {
-            background: #3e92cc;
-            color: white;
-        }
-        
-        .badge-yellow {
-            background: #ffc107;
-            color: #333;
-        }
-        
-        .badge-gray {
-            background: #6c757d;
-            color: white;
-        }
-        
-        .summary-footer {
-            margin-top: 1rem;
-            font-style: italic;
-            color: #555;
+        /* Hinweis */
+        .note {
             text-align: center;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
     <div class="test-container">
-        <h2>🎬 Filmstreifen Test</h2>
+        <h2>🎬 Ein Container zum Testen</h2>
         
-        <!-- ===== FILMSTREIFEN ===== -->
-        <div class="projects-carousel">
-            <div class="carousel-container" id="projectCarousel">
+        <!-- ===== SMART HOME CONTAINER (EINZELN) ===== -->
+        <div class="carousel-slide" data-i18n="project_smarthome">
+            <div class="project-card-carousel glow-schwach"> <!-- glow-schwach für 1% Aufwand -->
                 
-                <!-- Slide 1: KI-Studium -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>🧠 KI-Studium</h3>
-                            <p>seit 09/2024 - laufend</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>Sprachmodelle & Transformer</li>
-                                <li>Neuronale Netzarchitekturen</li>
-                                <li>Multimodale KI-Systeme</li>
-                                <li>Training von KI-Modellen</li>
-                                <li>Retrieval & Vektordatenbanken</li>
-                                <li>KI-Deployment & Container</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">80% Schwerpunkt</span>
-                                <span class="carousel-tag">Strategisch</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Kopfbereich -->
+                <div class="carousel-header">
+                    <h3 data-i18n="smarthome_title">Smart Home 🏠</h3>
+                    <p data-i18n="smarthome_period">2022-2024 · Privatprojekt 1%</p>
                 </div>
                 
-                <!-- Slide 2: Manus KI-Agent -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>⚡ Manus KI-Agent</h3>
-                            <p>2025 - 100% Umsetzung</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>Erstellung dieser Webseite</li>
-                                <li>Selbstständige GitHub-Integration</li>
-                                <li>Automatisierte Erweiterungen</li>
-                                <li>KI-gestütztes Deployment</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Manus</span>
-                                <span class="carousel-tag">GitHub</span>
-                                <span class="carousel-tag">WebDev</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Bildbereich -->
+                <img src="images/smarthome.png" alt="Smart Home" class="carousel-image" data-i18n-alt="smarthome_alt">
+                
+                <!-- Textbereich -->
+                <div class="carousel-body">
+                    <p data-i18n="smarthome_desc">Selbstständige Renovierung, Integration neuer Technologien, Planung über Videokonferenzen (Teams, Zoom) und Koordination via Social Media (YouTube, WhatsApp, Facebook).</p>
                 </div>
                 
-                <!-- Slide 3: Text-zu-Bild (Erweiterung) -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>🎨 Text-zu-Bild</h3>
-                            <p>2025-2026 (Erweiterung)</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>ControlNet Integration</li>
-                                <li>Midas Tiefenschätzung</li>
-                                <li>SAM2 Segmentierung</li>
-                                <li>100% lauffähig auf HF</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">ControlNet</span>
-                                <span class="carousel-tag">SAM2</span>
-                                <span class="carousel-tag">Midas</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Tag-Bereich -->
+                <div class="carousel-tags">
+                    <span class="carousel-tag" data-i18n="tag_iot">IoT</span>
+                    <span class="carousel-tag" data-i18n="tag_smarthome">Smart Home</span>
+                    <span class="carousel-tag" data-i18n="tag_renovation">Renovierung</span>
                 </div>
                 
-                <!-- Slide 4: Hugging Face -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>🤗 Hugging Face</h3>
-                            <p>2025 - 100% lauffähig</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>Text-zu-Bild Generierung</li>
-                                <li>Bild-zu-Bild Translation</li>
-                                <li>Diffusion Models</li>
-                                <li>Pipeline-Integration</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Hugging Face</span>
-                                <span class="carousel-tag">Diffusers</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 5: KI-Code-Agent -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>💻 KI-Code-Agent</h3>
-                            <p>2024 - Grundlagen 20%</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>Automatisierte Code-Generierung</li>
-                                <li>Code-Änderungen</li>
-                                <li>Log-Monitoring</li>
-                                <li>Sentence Transformers</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Python</span>
-                                <span class="carousel-tag">NLP</span>
-                                <span class="carousel-tag">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 6: Smart Home -->
-                <div class="carousel-slide">
-                    <div class="project-card-carousel">
-                        <div class="carousel-header">
-                            <h3>🏠 Smart Home</h3>
-                            <p>2022-2024 - Privatprojekt</p>
-                        </div>
-                        <div class="carousel-body">
-                            <ul>
-                                <li>Selbstständige Renovierung</li>
-                                <li>IoT-Integration</li>
-                                <li>Videokonferenz-Planung</li>
-                                <li>Social Media Koordination</li>
-                            </ul>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">IoT</span>
-                                <span class="carousel-tag">Smart Home</span>
-                                <span class="carousel-tag">1%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- Navigation Buttons -->
-            <button class="carousel-button prev" onclick="moveSlide(-1)">❮</button>
-            <button class="carousel-button next" onclick="moveSlide(1)">❯</button>
-            
-            <!-- Dots Navigation -->
-            <div class="carousel-dots" id="carouselDots">
-                <button class="carousel-dot active" onclick="currentSlide(0)"></button>
-                <button class="carousel-dot" onclick="currentSlide(1)"></button>
-                <button class="carousel-dot" onclick="currentSlide(2)"></button>
-                <button class="carousel-dot" onclick="currentSlide(3)"></button>
-                <button class="carousel-dot" onclick="currentSlide(4)"></button>
-                <button class="carousel-dot" onclick="currentSlide(5)"></button>
             </div>
         </div>
         
-        <!-- ===== PROJEKT-ZUSAMMENFASSUNG ===== -->
-        <div class="project-summary">
-            <h3 style="margin-bottom: 1rem; color: #0a3d62;">📊 Projektübersicht & Schwerpunkte</h3>
-            <div class="summary-grid">
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">🧠 KI-Studium</span>
-                    <span style="display: block; font-size: 0.9rem;">seit 09/2024 - laufend</span>
-                    <span class="badge badge-blue">Schwerpunkt: 80%</span>
-                </div>
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">⚡ Manus KI-Agent</span>
-                    <span style="display: block; font-size: 0.9rem;">2025</span>
-                    <span class="badge badge-green">Umsetzung: 100%</span>
-                </div>
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">🎨 Text-zu-Bild (Erweiterung)</span>
-                    <span style="display: block; font-size: 0.9rem;">2025-2026</span>
-                    <span class="badge badge-green">100% lauffähig auf HF</span>
-                </div>
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">🤗 Hugging Face</span>
-                    <span style="display: block; font-size: 0.9rem;">2025</span>
-                    <span class="badge badge-green">100% lauffähig</span>
-                </div>
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">💻 KI-Code-Agent</span>
-                    <span style="display: block; font-size: 0.9rem;">2024</span>
-                    <span class="badge badge-yellow">Grundlagen: 20%</span>
-                </div>
-                
-                <div class="summary-item">
-                    <span style="font-weight: bold; color: #0a3d62;">🏠 Smart Home</span>
-                    <span style="display: block; font-size: 0.9rem;">2022-2024</span>
-                    <span class="badge badge-gray">Privatprojekt: 1%</span>
-                </div>
-                
-            </div>
-            <div class="summary-footer">
-                🔍 Die Prozentangaben zeigen meinen strategischen Fokus: <strong>80% KI-Studium & Systemverständnis</strong>, der Rest dient der praktischen Validierung.
-            </div>
+        <div class="note">
+            ⚡ Dieser Container ist bereit für die Übersetzung (data-i18n Attribute)<br>
+            🔵 Glow-Effekt: schwach (für 1% Aufwand)
         </div>
+        
     </div>
-    
-    <script>
-        // ===== FILMSTREIFEN JAVASCRIPT =====
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const carouselContainer = document.getElementById('projectCarousel');
-        const totalSlides = slides.length;
-
-        function updateCarousel() {
-            // Container verschieben
-            const slideWidth = slides[0].offsetWidth + 20; // 20px für gap
-            carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-            
-            // Dots aktualisieren
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function moveSlide(direction) {
-            currentIndex += direction;
-            
-            // Grenzen prüfen
-            if (currentIndex < 0) {
-                currentIndex = 0;
-            } else if (currentIndex >= totalSlides) {
-                currentIndex = totalSlides - 1;
-            }
-            
-            updateCarousel();
-        }
-
-        function currentSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        // Bei Fenstergrößenänderung neu berechnen
-        window.addEventListener('resize', () => {
-            updateCarousel();
-        });
-    </script>
 </body>
 </html>
+
+
+
