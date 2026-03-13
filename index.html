@@ -184,6 +184,7 @@
             z-index: 10;
         }
 
+     <!-- Filmstreifen -->
         .project-card-carousel {
             background: rgba(245, 242, 230, 0.95); /* Leicht transparent für Hintergrund-Effekt */
             border-radius: 8px 8px 4px 4px;
@@ -196,6 +197,7 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             position: relative;
             backdrop-filter: blur(2px);
+            min-height: 550px; /* Feste Mindesthöhe */
         }
 
         .project-card-carousel::after {
@@ -241,7 +243,13 @@
             padding: 1rem;
             flex-grow: 1;
             background: rgba(245, 242, 230, 0.9);
+           min-height: 120px; /* Platz für Text */       
         }
+
+     .carousel-image {
+    height: 200px; /* Feste Bildhöhe */
+    object-fit: cover; /* Bild passt sich an */
+}
 
         .carousel-body ul {
             list-style: none;
