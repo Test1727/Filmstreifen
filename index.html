@@ -82,7 +82,7 @@
             border-top: 4px solid #8b6e4b;
             border-bottom: 4px solid #8b6e4b;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 40px 0 40px 0; /* Mehr Platz unten für Punkte */
+            padding: 40px 0 40px 0;
             backdrop-filter: blur(2px);
             z-index: 5;
         }
@@ -105,7 +105,7 @@
             z-index: 6;
         }
         
-        /* Untere Perforation (jetzt nur Perforation, keine Schrift) */
+        /* Untere Perforation */
         .projects-carousel::after {
             content: '';
             position: absolute;
@@ -132,68 +132,139 @@
             margin: 0 20px;
         }
         
-        /* Kodak-Schriftzug oben */
+        /* KODAK 35mm - jetzt mittig */
         .projects-carousel .carousel-container::before {
             content: 'KODAK 35mm';
             position: absolute;
-            top: -25px;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+            z-index: 20;
+            white-space: nowrap;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #c0a87b;
+        }
+        
+        /* SAFETY FILM oben links (mit Zahnrad) */
+        .projects-carousel .carousel-container::after {
+            content: '⚙️ SAFETY FILM';
+            position: absolute;
+            top: -35px;
+            left: 20px;
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+            z-index: 20;
+            white-space: nowrap;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #c0a87b;
+        }
+        
+        /* Wir brauchen zusätzliche Elemente für weitere Schriftzüge */
+        .safety-film-top-right {
+            position: absolute;
+            top: -35px;
+            right: 20px;
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+            z-index: 20;
+            white-space: nowrap;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #c0a87b;
+            pointer-events: none;
+        }
+        
+        .safety-film-top-right::after {
+            content: ' ⚙️';
+            font-size: 14px;
+        }
+        
+        .safety-film-bottom-left {
+            position: absolute;
+            bottom: 5px;
             left: 20px;
             color: rgba(192, 168, 123, 0.9);
             font-size: 12px;
             font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 7;
-        }
-        
-        /* Safety Film Schriftzug wurde entfernt - jetzt durch separate Elemente ersetzt */
-        .projects-carousel .carousel-container::after {
-            display: none;
-        }
-        
-        /* Zusätzliche SAFETY FILM Schriftzüge */
-        .safety-film-left {
-            position: absolute;
-            bottom: 15px;
-            left: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
-            font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            z-index: 20;
+            background: rgba(0,0,0,0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(192, 168, 123, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
         }
         
-        .safety-film-right {
+        .safety-film-bottom-left::before {
+            content: "⚙️";
+            margin-right: 5px;
+            font-size: 11px;
+        }
+        
+        .safety-film-bottom-right {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             right: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 12px;
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            z-index: 20;
+            background: rgba(0,0,0,0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(192, 168, 123, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .safety-film-bottom-right::after {
+            content: "⚙️";
+            margin-left: 5px;
+            font-size: 11px;
         }
         
         .safety-film-center {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(192, 168, 123, 0.5);
-            font-size: 10px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            opacity: 0.5;
+            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+            z-index: 20;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid rgba(192, 168, 123, 0.2);
+            white-space: nowrap;
+            pointer-events: none;
         }
 
         .projects-carousel {
@@ -403,10 +474,6 @@
             .carousel-button.next {
                 right: 5px;
             }
-            
-            .safety-film-left, .safety-film-right {
-                font-size: 9px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -429,13 +496,18 @@
                 right: 5px;
             }
             
-            .safety-film-left, .safety-film-right {
-                display: none; /* Auf Handy ausblenden */
+            /* Auf Handy alles außer Center ausblenden */
+            .safety-film-top-right,
+            .safety-film-bottom-left,
+            .safety-film-bottom-right {
+                display: none;
             }
             
             .safety-film-center {
-                font-size: 8px;
-                opacity: 0.3;
+                font-size: 10px;
+                opacity: 0.8;
+                bottom: 5px;
+                background: rgba(0,0,0,0.3);
             }
         }
     </style>
@@ -446,14 +518,15 @@
         
         <!-- ===== FILMSTREIFEN ===== -->
         <div class="projects-carousel">
-                 <!-- Zusätzliche SAFETY FILM Schriftzüge -->
-                <div class="safety-film-left">⏚ SAFETY FILM</div>
-                <div class="safety-film-right">SAFETY FILM ⏚</div>
-                <div class="safety-film-center">⚙️ 35mm ⚙️</div>
-            
             
             <div class="carousel-container" id="projectCarousel">
-           
+                
+                <!-- Zusätzliche SAFETY FILM Schriftzüge (als echte Elemente, da Pseudoelemente nicht ausreichen) -->
+                <div class="safety-film-top-right">SAFETY FILM</div>
+                <div class="safety-film-bottom-left">⚙️ SAFETY FILM</div>
+                <div class="safety-film-bottom-right">SAFETY FILM ⚙️</div>
+                <div class="safety-film-center">⚙️ 35mm ⚙️</div>
+                
                 <!-- Slide 1: KI-Studium -->
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
@@ -625,11 +698,9 @@
         const totalSlides = slides.length;
 
         function updateCarousel() {
-            // Container verschieben (inkl. Frame-Line)
             const slideWidth = slides[0].offsetWidth + 2;
             carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
             
-            // Dots aktualisieren
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
@@ -658,5 +729,3 @@
     </script>
 </body>
 </html>
-
-
