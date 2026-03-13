@@ -220,7 +220,7 @@
         .carousel-header {
             background: linear-gradient(135deg, #2c4b6b 0%, #1a3a54 100%); /* Primärfarben angepasst */
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 2px solid #8b6e4b;
         }
 
@@ -247,9 +247,13 @@
         }
 
      .carousel-image {
-    height: 200px; /* Feste Bildhöhe */
-    object-fit: cover; /* Bild passt sich an */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
 }
+
+
 
         .carousel-body ul {
             list-style: none;
@@ -274,14 +278,17 @@
             font-weight: bold;
         }
 
-        .carousel-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
-            border-top: 2px solid #c0a87b;
-        }
+
+
+
+     .carousel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 1rem 1.2rem 1.2rem;    /* Einheitlicher Abstand */
+    border-top: 2px solid #c0a87b;
+    margin-top: auto;                 /* Schiebt Tags nach unten */
+}
 
         .carousel-tag {
             background: #2c4b6b;
