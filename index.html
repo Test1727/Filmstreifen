@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
         /* Erste Form - kühles Blau (angepasst für gesamte Seite) */
         body::before {
             content: "";
-            position: fixed; /* Fixed damit es beim Scrollen bleibt */
+            position: fixed;
             width: 700px;
             height: 700px;
             background: radial-gradient(circle, rgba(180, 200, 230, 0.08) 0%, rgba(180, 200, 230, 0) 70%);
@@ -52,7 +52,7 @@
         .test-container {
             width: 100%;
             max-width: 1200px;
-            background: transparent; /* Transparent, damit Hintergrund durchscheint */
+            background: transparent;
             padding: 30px 0;
             border-radius: 0;
             box-shadow: none;
@@ -62,7 +62,7 @@
         
         h2 {
             text-align: center;
-            color: #0a3d62; /* Primärfarbe angepasst */
+            color: #0a3d62;
             margin-bottom: 30px;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 2px;
@@ -78,12 +78,12 @@
             width: 100%;
             margin: 2rem 0;
             overflow: visible;
-            background: rgba(139, 110, 75, 0.15); /* Leicht brauner Filmton, aber transparent */
+            background: rgba(139, 110, 75, 0.15);
             border-top: 4px solid #8b6e4b;
             border-bottom: 4px solid #8b6e4b;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 15px 0;
-            backdrop-filter: blur(2px); /* Leichter Weichzeichner für Glas-Effekt */
+            padding: 15px 0 40px 0; /* Mehr Platz unten für Punkte */
+            backdrop-filter: blur(2px);
             z-index: 5;
         }
         
@@ -105,7 +105,7 @@
             z-index: 6;
         }
         
-        /* Untere Perforation */
+        /* Untere Perforation (jetzt nur Perforation, keine Schrift) */
         .projects-carousel::after {
             content: '';
             position: absolute;
@@ -146,26 +146,62 @@
             z-index: 7;
         }
         
-        /* Safety Film Schriftzug unten */
+        /* Safety Film Schriftzug wurde entfernt - jetzt durch separate Elemente ersetzt */
         .projects-carousel .carousel-container::after {
-            content: 'SAFETY FILM';
+            display: none;
+        }
+        
+        /* Zusätzliche SAFETY FILM Schriftzüge */
+        .safety-film-left {
             position: absolute;
-            bottom: -25px;
+            bottom: 15px;
+            left: 20px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .safety-film-right {
+            position: absolute;
+            bottom: 15px;
             right: 20px;
-            color: rgba(192, 168, 123, 0.9);
-            font-size: 12px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .safety-film-center {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(192, 168, 123, 0.5);
+            font-size: 10px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 7;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            opacity: 0.5;
         }
 
-     .projects-carousel {
-    max-width: 100%;
-    overflow: hidden; /* Verhindert Überlauf */
-    margin-left: auto;
-    margin-right: auto;
-}
+        .projects-carousel {
+            max-width: 100%;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+        }
         
         .carousel-slide {
             min-width: calc(33.333% - 2px);
@@ -174,8 +210,6 @@
             position: relative;
             border-right: 2px solid #2b1e0e;
         }
-
-
         
         .carousel-slide:last-child {
             border-right: none;
@@ -185,10 +219,9 @@
             transform: translateY(-5px);
             z-index: 10;
         }
-
    
         .project-card-carousel {
-            background: rgba(245, 242, 230, 0.95); /* Leicht transparent für Hintergrund-Effekt */
+            background: rgba(245, 242, 230, 0.95);
             border-radius: 8px 8px 4px 4px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,200,0.3);
             overflow: hidden;
@@ -199,7 +232,7 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             position: relative;
             backdrop-filter: blur(2px);
-            min-height: 550px; /* Feste Mindesthöhe */
+            min-height: 550px;
         }
 
         .project-card-carousel::after {
@@ -220,7 +253,7 @@
         }
 
         .carousel-header {
-            background: linear-gradient(135deg, #2c4b6b 0%, #1a3a54 100%); /* Primärfarben angepasst */
+            background: linear-gradient(135deg, #2c4b6b 0%, #1a3a54 100%);
             color: white;
             padding: 1.2rem;
             border-bottom: 2px solid #8b6e4b;
@@ -247,14 +280,12 @@
             background: rgba(245, 242, 230, 0.9);
         }
 
-     .carousel-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-
-
+        .carousel-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
 
         .carousel-body ul {
             list-style: none;
@@ -279,17 +310,13 @@
             font-weight: bold;
         }
 
-
-
-
-     .carousel-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding: 1rem 1.2rem 1.2rem;    /* Einheitlicher Abstand */
-    border-top: 2px solid #c0a87b;
-}
-
+        .carousel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 1rem 1.2rem 1.2rem;
+            border-top: 2px solid #c0a87b;
+        }
 
         .carousel-tag {
             background: #2c4b6b;
@@ -342,7 +369,9 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 30px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 15;
         }
 
         .carousel-dot {
@@ -368,11 +397,15 @@
             }
             
             .carousel-button.prev {
-                left: -10px;
+                left: 5px;
             }
             
             .carousel-button.next {
-                right: -10px;
+                right: 5px;
+            }
+            
+            .safety-film-left, .safety-film-right {
+                font-size: 9px;
             }
         }
 
@@ -389,11 +422,20 @@
             }
             
             .carousel-button.prev {
-                left: -5px;
+                left: 5px;
             }
             
             .carousel-button.next {
-                right: -5px;
+                right: 5px;
+            }
+            
+            .safety-film-left, .safety-film-right {
+                display: none; /* Auf Handy ausblenden */
+            }
+            
+            .safety-film-center {
+                font-size: 8px;
+                opacity: 0.3;
             }
         }
     </style>
@@ -404,42 +446,37 @@
         
         <!-- ===== FILMSTREIFEN ===== -->
         <div class="projects-carousel">
+            
+            <!-- Zusätzliche SAFETY FILM Schriftzüge -->
+            <div class="safety-film-left">⏚ SAFETY FILM</div>
+            <div class="safety-film-right">SAFETY FILM ⏚</div>
+            <div class="safety-film-center">⚙️ 35mm ⚙️</div>
+            
             <div class="carousel-container" id="projectCarousel">
 
+                <!-- Slide 1: KI-Studium -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
+                        <div class="carousel-header">
+                            <h3>🧠 KI-Studium</h3>
+                            <p>seit 09/2024 - laufend</p>
+                        </div>
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
+                        <div class="carousel-body">
+                            <ul>
+                                <li>Sprachmodelle & Transformer</li>
+                                <li>Neuronale Netzarchitekturen</li>
+                                <li>Multimodale KI-Systeme</li>
+                                <li>Training von KI-Modellen</li>
+                            </ul>
+                        </div>
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">80% Schwerpunkt</span>
+                            <span class="carousel-tag">Strategisch</span>
+                        </div>
+                    </div>
+                </div>         
 
-             <!-- Slide 1: KI-Studium -->
-<div class="carousel-slide">
-    <div class="project-card-carousel">
-        
-        <!-- Bereich 1: Header -->
-        <div class="carousel-header">
-            <h3>🧠 KI-Studium</h3>
-            <p>seit 09/2024 - laufend</p>
-        </div>
-        
-        <!-- Bereich 2: Bild (NEU - zwischen Header und Body) -->
-        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
-        
-        <!-- Bereich 3: Body (Text) -->
-        <div class="carousel-body">
-            <ul>
-                <li>Sprachmodelle & Transformer</li>
-                <li>Neuronale Netzarchitekturen</li>
-                <li>Multimodale KI-Systeme</li>
-                <li>Training von KI-Modellen</li>
-            </ul>
-        </div>
-        
-        <!-- Bereich 4: Tags -->
-        <div class="carousel-tags">
-            <span class="carousel-tag">80% Schwerpunkt</span>
-            <span class="carousel-tag">Strategisch</span>
-        </div>
-        
-    </div>
-</div>         
-
-                
                 <!-- Slide 2: Manus KI-Agent -->
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
@@ -447,7 +484,7 @@
                             <h3>⚡ Manus KI-Agent</h3>
                             <p>2025 - 100% Umsetzung</p>
                         </div>
-                         <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Manus" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Erstellung dieser Webseite</li>
@@ -456,12 +493,11 @@
                                 <li>KI-gestütztes Deployment</li>
                             </ul>
                         </div>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Manus</span>
-                                <span class="carousel-tag">GitHub</span>
-                                <span class="carousel-tag">WebDev</span>
-                            </div>
-                       
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">Manus</span>
+                            <span class="carousel-tag">GitHub</span>
+                            <span class="carousel-tag">WebDev</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -472,7 +508,7 @@
                             <h3>🎨 Text-zu-Bild</h3>
                             <p>2025-2026 (Erweiterung)</p>
                         </div>
-                      <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Text-zu-Bild" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>ControlNet Integration</li>
@@ -481,12 +517,11 @@
                                 <li>100% lauffähig auf HF</li>
                             </ul>
                         </div>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">ControlNet</span>
-                                <span class="carousel-tag">SAM2</span>
-                                <span class="carousel-tag">Midas</span>
-                            </div>
-                        
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">ControlNet</span>
+                            <span class="carousel-tag">SAM2</span>
+                            <span class="carousel-tag">Midas</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -497,7 +532,7 @@
                             <h3>🤗 Hugging Face</h3>
                             <p>2025 - 100% lauffähig</p>
                         </div>
-                      <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Hugging Face" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Text-zu-Bild Generierung</li>
@@ -506,11 +541,10 @@
                                 <li>Pipeline-Integration</li>
                             </ul>
                         </div>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Hugging Face</span>
-                                <span class="carousel-tag">Diffusers</span>
-                            </div>
-                       
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">Hugging Face</span>
+                            <span class="carousel-tag">Diffusers</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -521,7 +555,7 @@
                             <h3>💻 KI-Code-Agent</h3>
                             <p>2024 - Grundlagen 20%</p>
                         </div>
-                      <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Code-Agent" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Automatisierte Code-Generierung</li>
@@ -530,57 +564,57 @@
                                 <li>Sentence Transformers</li>
                             </ul>
                         </div>
-                            <div class="carousel-tags">
-                                <span class="carousel-tag">Python</span>
-                                <span class="carousel-tag">NLP</span>
-                                <span class="carousel-tag">20%</span>
-                            </div>
-                        
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">Python</span>
+                            <span class="carousel-tag">NLP</span>
+                            <span class="carousel-tag">20%</span>
+                        </div>
                     </div>
                 </div>
 
-             <!-- Slide 6: Smart Home -->
-<div class="carousel-slide">
-    <div class="project-card-carousel">
-        <div class="carousel-header">
-            <h3>🏠 Smart Home</h3>
-            <p>2022-2024 - Privatprojekt</p>
-        </div>
-        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="KI-Studium" class="carousel-image">
-        <div class="carousel-body">
-            <ul>
-                <li>Selbstständige Renovierung</li>
-                <li>IoT-Integration</li>
-                <li>Videokonferenz-Planung</li>
-                <li>Social Media Koordination</li>
-            </ul>
-        </div>
-        <div class="carousel-tags">
-            <span class="carousel-tag">IoT</span>
-            <span class="carousel-tag">Smart Home</span>
-            <span class="carousel-tag">1%</span>
-        </div>                 
-    </div>  <!-- project-card-carousel ENDE -->
-</div>  <!-- carousel-slide ENDE -->
- </div>
-         
+                <!-- Slide 6: Smart Home -->
+                <div class="carousel-slide">
+                    <div class="project-card-carousel">
+                        <div class="carousel-header">
+                            <h3>🏠 Smart Home</h3>
+                            <p>2022-2024 - Privatprojekt</p>
+                        </div>
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Smart Home" class="carousel-image">
+                        <div class="carousel-body">
+                            <ul>
+                                <li>Selbstständige Renovierung</li>
+                                <li>IoT-Integration</li>
+                                <li>Videokonferenz-Planung</li>
+                                <li>Social Media Koordination</li>
+                            </ul>
+                        </div>
+                        <div class="carousel-tags">
+                            <span class="carousel-tag">IoT</span>
+                            <span class="carousel-tag">Smart Home</span>
+                            <span class="carousel-tag">1%</span>
+                        </div>                 
+                    </div>
+                </div>
+                
+            </div> <!-- Ende carousel-container -->
             
             <!-- Navigation Buttons -->
             <button class="carousel-button prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-button next" onclick="moveSlide(1)">❯</button>
             
-            <!-- Dots Navigation -->
-            <div class="carousel-dots" id="carouselDots">
-                <button class="carousel-dot active" onclick="currentSlide(0)"></button>
-                <button class="carousel-dot" onclick="currentSlide(1)"></button>
-                <button class="carousel-dot" onclick="currentSlide(2)"></button>
-                <button class="carousel-dot" onclick="currentSlide(3)"></button>
-                <button class="carousel-dot" onclick="currentSlide(4)"></button>
-                <button class="carousel-dot" onclick="currentSlide(5)"></button>
-            </div>
+        </div> <!-- Ende projects-carousel -->
+        
+        <!-- Dots Navigation (UNTER dem Filmstreifen) -->
+        <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" onclick="currentSlide(0)"></button>
+            <button class="carousel-dot" onclick="currentSlide(1)"></button>
+            <button class="carousel-dot" onclick="currentSlide(2)"></button>
+            <button class="carousel-dot" onclick="currentSlide(3)"></button>
+            <button class="carousel-dot" onclick="currentSlide(4)"></button>
+            <button class="carousel-dot" onclick="currentSlide(5)"></button>
         </div>
-    </div>
-   
+        
+    </div> <!-- Ende test-container -->
     
     <script>
         // ===== FILMSTREIFEN JAVASCRIPT =====
@@ -592,7 +626,7 @@
 
         function updateCarousel() {
             // Container verschieben (inkl. Frame-Line)
-            const slideWidth = slides[0].offsetWidth + 2; // +2 für border-right
+            const slideWidth = slides[0].offsetWidth + 2;
             carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
             
             // Dots aktualisieren
@@ -604,7 +638,6 @@
         function moveSlide(direction) {
             currentIndex += direction;
             
-            // Grenzen prüfen
             if (currentIndex < 0) {
                 currentIndex = 0;
             } else if (currentIndex >= totalSlides) {
@@ -619,7 +652,6 @@
             updateCarousel();
         }
 
-        // Bei Fenstergrößenänderung neu berechnen
         window.addEventListener('resize', () => {
             updateCarousel();
         });
