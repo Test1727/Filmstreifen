@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 40px 20px;
-            background: #f5f5f5;
+            background: #2b2b2b; /* Dunkler Hintergrund wie Kino */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,16 +20,20 @@
         .test-container {
             width: 100%;
             max-width: 1200px;
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: transparent; /* Transparent, damit Filmstreifen sichtbar */
+            padding: 30px 0; /* Weniger Padding, mehr Platz für Film */
+            border-radius: 0;
+            box-shadow: none;
         }
         
         h2 {
             text-align: center;
-            color: #0a3d62;
+            color: #f0e6d2; /* Helles Beige, wie altes Filmmaterial */
             margin-bottom: 30px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         /* ===== FILMSTREIFEN STYLES ===== */
@@ -37,64 +41,169 @@
             position: relative;
             width: 100%;
             margin: 2rem 0;
-            overflow: hidden;
+            overflow: visible; /* Damit Perforation nicht abgeschnitten wird */
+            background: rgba(50, 30, 10, 0.3); /* Leicht braun-oranger Film */
+            border-top: 4px solid #8b6e4b;
+            border-bottom: 4px solid #8b6e4b;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            padding: 15px 0; /* Platz für Perforation */
         }
-
-        .carousel-container {
+        
+        /* Obere Perforation */
+        .projects-carousel::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                #c0a87b 20px,
+                #c0a87b 28px
+            );
+            z-index: 5;
+            opacity: 0.8;
+        }
+        
+        /* Untere Perforation */
+        .projects-carousel::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                #c0a87b 20px,
+                #c0a87b 28px
+            );
+            z-index: 5;
+            opacity: 0.8;
+        }
+        
+        /* Filmrand links/rechts */
+        .projects-carousel .carousel-container {
+            position: relative;
             display: flex;
             transition: transform 0.5s ease;
-            gap: 20px;
+            gap: 0; /* Kein Gap, denn Frame-Lines übernehmen */
             padding: 20px 0;
+            margin: 0 20px; /* Platz für Rand */
         }
-
+        
+        /* Frame-Lines zwischen den Bildern */
         .carousel-slide {
-            min-width: calc(33.333% - 14px);
+            min-width: calc(33.333% - 2px); /* Platz für Frame-Line */
             flex: 0 0 auto;
             transition: transform 0.3s ease;
+            position: relative;
+            border-right: 2px solid #2b1e0e; /* Dunkle Frame-Line */
         }
-
+        
+        .carousel-slide:last-child {
+            border-right: none; /* Keine Linie nach letztem Bild */
+        }
+        
         .carousel-slide:hover {
             transform: translateY(-5px);
+            z-index: 10;
+        }
+
+        /* Filmkennzeichnung am Rand (wie Kodak-Schriftzug) */
+        .projects-carousel::before {
+            content: '';
+            /* ... vorhandene Perforation ... */
+        }
+        
+        /* Zusätzlicher Schriftzug (optional) */
+        .projects-carousel .carousel-container::before {
+            content: 'KODAK 35mm';
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            color: #c0a87b;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            z-index: 6;
+        }
+        
+        .projects-carousel .carousel-container::after {
+            content: 'SAFETY FILM';
+            position: absolute;
+            bottom: -25px;
+            right: 20px;
+            color: #c0a87b;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            z-index: 6;
         }
 
         .project-card-carousel {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: #f5f2e6; /* Altemulsion-Farbe */
+            border-radius: 8px 8px 4px 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,200,0.2);
             overflow: hidden;
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #5a4a3a;
             transition: box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        /* Leichter Vignettierung für Filmlook */
+        .project-card-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+            pointer-events: none;
+            border-radius: 8px;
         }
 
         .project-card-carousel:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,200,0.3);
         }
 
         .carousel-header {
-            background: linear-gradient(135deg, #3e92cc 0%, #1a5f8a 100%);
-            color: white;
-            padding: 1.2rem;
+            background: linear-gradient(135deg, #3e2c1a 0%, #1a1208 100%);
+            color: #f0e6d2;
+            padding: 1rem;
+            border-bottom: 2px solid #8b6e4b;
         }
 
         .carousel-header h3 {
             margin: 0;
-            color: white;
-            font-size: 1.3rem;
+            color: #f0e6d2;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px black;
         }
 
         .carousel-header p {
-            margin: 0.5rem 0 0 0;
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
+            margin: 0.3rem 0 0 0;
+            color: #c0a87b;
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
         }
 
         .carousel-body {
-            padding: 1.2rem;
+            padding: 1rem;
             flex-grow: 1;
-            background: #f9f9f9;
+            background: #f5f2e6;
         }
 
         .carousel-body ul {
@@ -104,106 +213,118 @@
         }
 
         .carousel-body li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            padding-left: 1.2rem;
             position: relative;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            color: #333;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            color: #2b1e0e;
         }
 
         .carousel-body li:before {
-            content: "▹";
+            content: "•";
             position: absolute;
             left: 0;
-            color: #3e92cc;
+            color: #8b6e4b;
             font-weight: bold;
         }
 
         .carousel-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e0e0e0;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 2px solid #c0a87b;
         }
 
         .carousel-tag {
-            background: #3e92cc;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background: #5a4a3a;
+            color: #f0e6d2;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #8b6e4b;
         }
 
         .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: white;
-            border: none;
+            background: rgba(50, 30, 10, 0.7);
+            border: 2px solid #c0a87b;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             cursor: pointer;
             font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 10;
-            color: #0a3d62;
-            border: 1px solid #3e92cc;
+            z-index: 20;
+            color: #c0a87b;
         }
 
         .carousel-button:hover {
-            background: #3e92cc;
-            color: white;
+            background: #8b6e4b;
+            color: #2b1e0e;
             transform: translateY(-50%) scale(1.1);
+            border-color: #f0e6d2;
         }
 
         .carousel-button.prev {
-            left: 10px;
+            left: -20px;
         }
 
         .carousel-button.next {
-            right: 10px;
+            right: -20px;
         }
 
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 30px;
         }
 
         .carousel-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: #ccc;
+            background: #5a4a3a;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: none;
+            border: 1px solid #c0a87b;
         }
 
         .carousel-dot.active {
-            background: #3e92cc;
-            transform: scale(1.2);
+            background: #c0a87b;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px #c0a87b;
         }
 
         @media (max-width: 992px) {
             .carousel-slide {
-                min-width: calc(50% - 10px);
+                min-width: calc(50% - 2px);
+            }
+            
+            .carousel-button.prev {
+                left: -10px;
+            }
+            
+            .carousel-button.next {
+                right: -10px;
             }
         }
 
         @media (max-width: 768px) {
             .carousel-slide {
                 min-width: calc(100% - 0px);
+                border-right: none;
             }
             
             .carousel-button {
@@ -211,12 +332,20 @@
                 height: 35px;
                 font-size: 1rem;
             }
+            
+            .carousel-button.prev {
+                left: -5px;
+            }
+            
+            .carousel-button.next {
+                right: -5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="test-container">
-        <h2>🎬 Filmstreifen Test</h2>
+        <h2>🎞️ KLASSISCHER FILMSTREIFEN</h2>
         
         <!-- ===== FILMSTREIFEN ===== -->
         <div class="projects-carousel">
@@ -387,8 +516,8 @@
         const totalSlides = slides.length;
 
         function updateCarousel() {
-            // Container verschieben
-            const slideWidth = slides[0].offsetWidth + 20; // 20px für gap
+            // Container verschieben (inkl. Frame-Line)
+            const slideWidth = slides[0].offsetWidth + 2; // +2 für border-right
             carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
             
             // Dots aktualisieren
