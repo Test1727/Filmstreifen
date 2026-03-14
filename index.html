@@ -409,18 +409,38 @@
     box-sizing: border-box;          /* Padding und border in der Breite enthalten */
 }
 
-/* ===== TABLET ===== */
+
+/* ===== TABLET (Slide-Anzahl) ===== */
 @media (max-width: 992px) {
     .carousel-slide {
-        width: calc(50% - 2px);      /* 2 Slides nebeneinander */
+        width: calc(50% - 2px);
     }
 }
 
-/* ===== HANDY ===== */
+/* ===== TABLET (und größer - SAFETY FILM sichtbar) ===== */
+@media (min-width: 769px) {
+    .safety-film-left, 
+    .safety-film-right {
+        display: block;
+    }
+}
+
+/* ===== HANDY (Slide-Anzahl + SAFETY FILM ausblenden) ===== */
 @media (max-width: 768px) {
     .carousel-slide {
-        width: calc(100% - 0px);     /* 1 Slide vollbreit */
-        border-right: none;           /* Keine Trenner mehr nötig */
+        width: calc(100% - 0px);
+        border-right: none;
+    }
+    
+    .safety-film-left, 
+    .safety-film-right {
+        display: none;
+    }
+    
+    .safety-film-center {
+        display: block;
+        font-size: 8px;
+        opacity: 0.3;
     }
 }
 
