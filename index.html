@@ -82,7 +82,7 @@
             border-top: 4px solid #8b6e4b;
             border-bottom: 4px solid #8b6e4b;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 40px 0 40px 0; /* Mehr Platz unten für Punkte */
+            padding: 40px 0 40px 0;
             backdrop-filter: blur(2px);
             z-index: 5;
         }
@@ -105,7 +105,7 @@
             z-index: 6;
         }
         
-        /* Untere Perforation (jetzt nur Perforation, keine Schrift) */
+        /* Untere Perforation */
         .projects-carousel::after {
             content: '';
             position: absolute;
@@ -136,65 +136,95 @@
         .projects-carousel .carousel-container::before {
             content: 'KODAK 35mm';
             position: absolute;
-            top: -25px;
+            top: -35px;
             left: 50%;
-            transform: translateX(-50%); /* Zentriert */
+            transform: translateX(-50%);
             color: rgba(192, 168, 123, 0.9);
-            font-size: 12px;
+            font-size: 14px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 7;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+            z-index: 20;
+            white-space: nowrap;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #c0a87b;
         }
         
-        /* Safety Film Schriftzug wurde entfernt - jetzt durch separate Elemente ersetzt */
         .projects-carousel .carousel-container::after {
             display: none;
         }
         
-        /* Zusätzliche SAFETY FILM Schriftzüge */
+        /* SAFETY FILM Schriftzüge */
         .safety-film-left {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             left: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 12px;
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            z-index: 20;
+            background: rgba(0,0,0,0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(192, 168, 123, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .safety-film-left::before {
+            content: "⚙️";
+            margin-right: 5px;
+            font-size: 11px;
         }
         
         .safety-film-right {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             right: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
+            color: rgba(192, 168, 123, 0.9);
+            font-size: 12px;
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            z-index: 20;
+            background: rgba(0,0,0,0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(192, 168, 123, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .safety-film-right::after {
+            content: "⚙️";
+            margin-left: 5px;
+            font-size: 11px;
         }
         
         .safety-film-center {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(192, 168, 123, 0.5);
-            font-size: 10px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            opacity: 0.5;
+            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+            z-index: 20;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid rgba(192, 168, 123, 0.2);
+            white-space: nowrap;
+            pointer-events: none;
         }
 
         .projects-carousel {
@@ -203,20 +233,20 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
+        /* ===== CAROUSEL SLIDES ===== */
         .carousel-slide {
-            min-width: calc(33.333% - 2px);
             flex: 0 0 auto;
             transition: transform 0.3s ease;
             position: relative;
             border-right: 2px solid #ff8c42;
+            box-sizing: border-box;
         }
 
-        
         .carousel-slide:last-child {
             border-right: none;
         }
-        
+
         .carousel-slide:hover {
             transform: translateY(-5px);
             z-index: 10;
@@ -234,7 +264,6 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             position: relative;
             backdrop-filter: blur(2px);
-            min-height: 550px;
         }
 
         .project-card-carousel::after {
@@ -347,7 +376,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 20;
+            z-index: 30;
             color: #0a3d62;
             backdrop-filter: blur(5px);
         }
@@ -393,32 +422,16 @@
             box-shadow: 0 0 15px #3e92cc;
         }
 
+        /* ===== DESKTOP (Standard) ===== */
+        .carousel-slide {
+            width: calc(33.333% - 2px);
+        }
 
-        /* ===== DESKTOP BASIS (Standard) ===== */
-.carousel-slide {
-    width: calc(33.333% - 2px);      /* 3 Slides nebeneinander */
-    flex: 0 0 auto;
-    transition: transform 0.3s ease;
-    position: relative;
-    border-right: 2px solid #ff8c42;
-    box-sizing: border-box;          /* Padding und border in der Breite enthalten */
-}
-
-/* ===== TABLET ===== */
-@media (max-width: 992px) {
-    .carousel-slide {
-        width: calc(50% - 2px);      /* 2 Slides nebeneinander */
-    }
-}
-
-/* ===== HANDY ===== */
-@media (max-width: 768px) {
-    .carousel-slide {
-        width: calc(100% - 0px);     /* 1 Slide vollbreit */
-        border-right: none;           /* Keine Trenner mehr nötig */
-    }
-}
-
+        /* ===== TABLET ===== */
+        @media (max-width: 992px) {
+            .carousel-slide {
+                width: calc(50% - 2px);
+            }
             
             .carousel-button.prev {
                 left: 5px;
@@ -428,12 +441,18 @@
                 right: 5px;
             }
             
-            .safety-film-left, .safety-film-right {
+            .safety-film-left, 
+            .safety-film-right {
                 font-size: 9px;
-            }  
+            }
         }
 
-   
+        /* ===== HANDY ===== */
+        @media (max-width: 768px) {
+            .carousel-slide {
+                width: calc(100% - 0px);
+                border-right: none;
+            }
             
             .carousel-button {
                 width: 35px;
@@ -441,16 +460,15 @@
                 font-size: 1rem;
             }
             
-            .carousel-button.prev {
-                left: 5px;
-            }
-            
+            .carousel-button.prev,
             .carousel-button.next {
+                left: 5px;
                 right: 5px;
             }
             
-            .safety-film-left, .safety-film-right {
-                display: none; /* Auf Handy ausblenden */
+            .safety-film-left, 
+            .safety-film-right {
+                display: none;
             }
             
             .safety-film-center {
