@@ -619,46 +619,52 @@
         </div>
         
     </div> <!-- Ende test-container -->
-    
+
+
     <script>
-        // ===== FILMSTREIFEN JAVASCRIPT =====
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const carouselContainer = document.getElementById('projectCarousel');
-        const totalSlides = slides.length;
+    // ===== VERBESSERTES JAVASCRIPT =====
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const carouselContainer = document.getElementById('projectCarousel');
+    const totalSlides = slides.length;
 
-        function updateCarousel() {
-            // Container verschieben (inkl. Frame-Line)
-            const slideWidth = slides[0].offsetWidth + 2;
-            carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-            
-            // Dots aktualisieren
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
+    function getSlideWidth() {
+        // Berechnet die aktuelle Breite inkl. Abstände
+        return slides[0].offsetWidth + 2; // +2 für border-right
+    }
 
-        function moveSlide(direction) {
-            currentIndex += direction;
-            
-            if (currentIndex < 0) {
-                currentIndex = 0;
-            } else if (currentIndex >= totalSlides) {
-                currentIndex = totalSlides - 1;
-            }
-            
-            updateCarousel();
-        }
-
-        function currentSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        window.addEventListener('resize', () => {
-            updateCarousel();
+    function updateCarousel() {
+        const slideWidth = getSlideWidth();
+        carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
         });
-    </script>
+    }
+
+    function moveSlide(direction) {
+        currentIndex += direction;
+        
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        } else if (currentIndex >= totalSlides) {
+            currentIndex = totalSlides - 1;
+        }
+        
+        updateCarousel();
+    }
+
+    function currentSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    // Wichtig: Bei Fenstergrößenänderung neu berechnen!
+    window.addEventListener('resize', () => {
+        updateCarousel();
+    });
+</script>
+
 </body>
 </html>
