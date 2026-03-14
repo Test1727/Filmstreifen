@@ -82,7 +82,7 @@
             border-top: 4px solid #8b6e4b;
             border-bottom: 4px solid #8b6e4b;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 40px 0 40px 0;
+            padding: 40px 0 40px 0; /* Mehr Platz unten für Punkte */
             backdrop-filter: blur(2px);
             z-index: 5;
         }
@@ -105,7 +105,7 @@
             z-index: 6;
         }
         
-        /* Untere Perforation */
+        /* Untere Perforation (jetzt nur Perforation, keine Schrift) */
         .projects-carousel::after {
             content: '';
             position: absolute;
@@ -136,95 +136,65 @@
         .projects-carousel .carousel-container::before {
             content: 'KODAK 35mm';
             position: absolute;
-            top: -35px;
+            top: -25px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); /* Zentriert */
             color: rgba(192, 168, 123, 0.9);
-            font-size: 14px;
+            font-size: 12px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(0,0,0,0.5);
-            z-index: 20;
-            white-space: nowrap;
-            background: rgba(0,0,0,0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid #c0a87b;
+            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+            z-index: 7;
         }
         
+        /* Safety Film Schriftzug wurde entfernt - jetzt durch separate Elemente ersetzt */
         .projects-carousel .carousel-container::after {
             display: none;
         }
         
-        /* SAFETY FILM Schriftzüge */
+        /* Zusätzliche SAFETY FILM Schriftzüge */
         .safety-film-left {
             position: absolute;
-            bottom: 5px;
+            bottom: 15px;
             left: 20px;
-            color: rgba(192, 168, 123, 0.9);
-            font-size: 12px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            font-weight: 500;
-            text-shadow: 0 0 5px rgba(0,0,0,0.4);
-            z-index: 20;
-            background: rgba(0,0,0,0.15);
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(192, 168, 123, 0.3);
-            white-space: nowrap;
-            pointer-events: none;
-        }
-        
-        .safety-film-left::before {
-            content: "⚙️";
-            margin-right: 5px;
-            font-size: 11px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
         }
         
         .safety-film-right {
             position: absolute;
-            bottom: 5px;
+            bottom: 15px;
             right: 20px;
-            color: rgba(192, 168, 123, 0.9);
-            font-size: 12px;
+            color: rgba(192, 168, 123, 0.7);
+            font-size: 11px;
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
-            font-weight: 500;
-            text-shadow: 0 0 5px rgba(0,0,0,0.4);
-            z-index: 20;
-            background: rgba(0,0,0,0.15);
-            padding: 3px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(192, 168, 123, 0.3);
-            white-space: nowrap;
-            pointer-events: none;
-        }
-        
-        .safety-film-right::after {
-            content: "⚙️";
-            margin-left: 5px;
-            font-size: 11px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
         }
         
         .safety-film-center {
             position: absolute;
-            bottom: 5px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
+            color: rgba(192, 168, 123, 0.5);
+            font-size: 10px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 20;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 6px;
-            border-radius: 3px;
-            border: 1px solid rgba(192, 168, 123, 0.2);
-            white-space: nowrap;
-            pointer-events: none;
+            text-shadow: 0 0 3px rgba(0,0,0,0.2);
+            z-index: 8;
+            opacity: 0.5;
         }
 
         .projects-carousel {
@@ -233,21 +203,20 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* ===== DESKTOP BASIS (Standard) ===== */
+        
         .carousel-slide {
-            width: calc(33.333% - 2px);
+            min-width: calc(33.333% - 2px);
             flex: 0 0 auto;
             transition: transform 0.3s ease;
             position: relative;
             border-right: 2px solid #ff8c42;
-            box-sizing: border-box;
         }
 
+        
         .carousel-slide:last-child {
             border-right: none;
         }
-
+        
         .carousel-slide:hover {
             transform: translateY(-5px);
             z-index: 10;
@@ -265,6 +234,7 @@
             transition: box-shadow 0.3s ease, transform 0.3s ease;
             position: relative;
             backdrop-filter: blur(2px);
+            min-height: 550px;
         }
 
         .project-card-carousel::after {
@@ -377,7 +347,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 30;
+            z-index: 20;
             color: #0a3d62;
             backdrop-filter: blur(5px);
         }
@@ -423,10 +393,52 @@
             box-shadow: 0 0 15px #3e92cc;
         }
 
-        /* ===== TABLET (max-width: 992px) ===== */
-        @media (max-width: 992px) {
-            .carousel-slide {
-                width: calc(50% - 2px);
+
+        /* ===== DESKTOP BASIS (Standard) ===== */
+.carousel-slide {
+    width: calc(33.333% - 2px);      /* 3 Slides nebeneinander */
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+    position: relative;
+    border-right: 2px solid #ff8c42;
+    box-sizing: border-box;          /* Padding und border in der Breite enthalten */
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 992px) {
+    .carousel-slide {
+        width: calc(50% - 2px);      /* 2 Slides nebeneinander */
+    }
+}
+
+/* ===== HANDY ===== */
+@media (max-width: 768px) {
+    .carousel-slide {
+        width: calc(100% - 0px);     /* 1 Slide vollbreit */
+        border-right: none;           /* Keine Trenner mehr nötig */
+    }
+}
+
+            
+            .carousel-button.prev {
+                left: 5px;
+            }
+            
+            .carousel-button.next {
+                right: 5px;
+            }
+            
+            .safety-film-left, .safety-film-right {
+                font-size: 9px;
+            }  
+        }
+
+   
+            
+            .carousel-button {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
             
             .carousel-button.prev {
@@ -437,34 +449,8 @@
                 right: 5px;
             }
             
-            .safety-film-left, 
-            .safety-film-right {
-                font-size: 9px;
-            }
-        }
-
-        /* ===== HANDY (max-width: 768px) ===== */
-        @media (max-width: 768px) {
-            .carousel-slide {
-                width: calc(100% - 0px);
-                border-right: none;
-            }
-            
-            .carousel-button {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-            
-            .carousel-button.prev,
-            .carousel-button.next {
-                left: 5px;
-                right: 5px;
-            }
-            
-            .safety-film-left, 
-            .safety-film-right {
-                display: none;
+            .safety-film-left, .safety-film-right {
+                display: none; /* Auf Handy ausblenden */
             }
             
             .safety-film-center {
@@ -480,26 +466,28 @@
         
         <!-- ===== FILMSTREIFEN ===== -->
         <div class="projects-carousel">
-            <!-- SAFETY FILM Schriftzüge -->
-            <div class="safety-film-left">SAFETY FILM</div>
-            <div class="safety-film-right">SAFETY FILM</div>
-            <div class="safety-film-center">⚙️ 35mm ⚙️</div>
+                 <!-- Zusätzliche SAFETY FILM Schriftzüge -->
+                <div class="safety-film-left">⏚ SAFETY FILM</div>
+                <div class="safety-film-right">SAFETY FILM ⏚</div>
+                <div class="safety-film-center">⚙️ 35mm ⚙️</div>
+            
             
             <div class="carousel-container" id="projectCarousel">
-                <!-- Slide 1: Smart Home -->
+           
+                <!-- Slide 1:Smart Home -->
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
                         <div class="carousel-header">
                             <h3>🏠 Smart Home</h3>
-                            <p>2022-2024 Eigenheim-Technologisierung</p>
+                            <p> 2022-2024 Eigenheim-Technologisierung</p>
                         </div>
-                        <img src="images/Grok%20Image%202026-03-14%20at%206.47.37%20AM.jpeg" alt="Smart Home" class="carousel-image">
+                        <img src="images/Grok%20Image%202026-03-14%20at%206.47.37%20AM.jpeg" alt="KI-Studium" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
-                                <li>Selbstständige Renovierung</li>
+                                <li>Selbständige Renovierung</li>
                                 <li>IoT-Integration</li>
                                 <li>Videokonferenz-Planung</li>
-                                <li>Social Media Koordination</li>
+                                 <li>Sozial Media Koordination</li>
                             </ul>
                         </div>
                         <div class="carousel-tags">
@@ -508,7 +496,7 @@
                             <span class="carousel-tag">70% Schwerpunkt</span>                      
                         </div>
                     </div>
-                </div>
+                </div>         
 
                 <!-- Slide 2: KI-Studium -->
                 <div class="carousel-slide">
@@ -517,7 +505,7 @@
                             <h3>🧠 KI-Studium</h3>
                             <p>Anfang 2025 - Ende 2025</p>
                         </div>
-                        <img src="images/Grok%20Image%202026-03-14%20at%206.19.41%20AM.jpeg" alt="KI-Studium" class="carousel-image">
+                        <img src="images/Grok%20Image%202026-03-14%20at%206.19.41%20AM.jpeg" alt="Manus" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Mathematik</li>
@@ -533,14 +521,14 @@
                     </div>
                 </div>
                 
-                <!-- Slide 3: Manus KI-Agent -->
+                <!-- Slide 3: Manus: KI-Agent -->
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
                         <div class="carousel-header">
                             <h3>⚡ Manus KI-Agent</h3>
                             <p>Mitte 2025 und März 2026</p>
                         </div>
-                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Manus" class="carousel-image">
+                        <img src="images/8FC0602B-8BC7-4867-A27D-A783B317AE96.png" alt="Text-zu-Bild" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Diese Webseite</li>
@@ -552,7 +540,7 @@
                         <div class="carousel-tags">
                             <span class="carousel-tag">HTML</span>
                             <span class="carousel-tag">CSS</span>
-                            <span class="carousel-tag">JavaScript</span>
+                             <span class="carousel-tag">JavaScript</span>
                             <span class="carousel-tag">GitHub</span>
                         </div>
                     </div>
@@ -565,7 +553,7 @@
                             <h3>🎨 Text-zu-Bild</h3>
                             <p>Ende 2025 - Anfang 2026</p>
                         </div>
-                        <img src="images/IMG_1052.webp" alt="Text-zu-Bild" class="carousel-image">
+                        <img src="images/IMG_1052.webp" alt="Hugging Face" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Text-zu-Bild Generierung</li>
@@ -582,20 +570,20 @@
                     </div>
                 </div>
                 
-                <!-- Slide 5: Erweiterung Bild-zu-Bild -->
+                <!-- Slide 5: Bild zu Bild ControlNet -->
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
                         <div class="carousel-header">
                             <h3>🎨 Erweiterung Bild-zu-Bild</h3>
                             <p>Ende 2025 - Anfang 2026</p>
                         </div>
-                        <img src="images/FDEAC67C-4022-49DC-8009-50C01E34462F-COLLAGE.jpeg" alt="Bild-zu-Bild" class="carousel-image">
+                        <img src="images/FDEAC67C-4022-49DC-8009-50C01E34462F-COLLAGE.jpeg" alt="KI-Code-Agent" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
-                                <li>Zusätzliche KI-Modelle</li>
+                                <li>zusätzliche KI-Modelle</li>
                                 <li>Hardware-Änderung</li>
-                                <li>Komplexere Systemlandschaft</li>
-                                <li>Professionellere Umgebung</li>
+                                <li>komplexere Systemlandschaft</li>
+                                <li>professionellere Umgebung</li>
                             </ul>
                         </div>
                         <div class="carousel-tags">
@@ -610,10 +598,10 @@
                 <div class="carousel-slide">
                     <div class="project-card-carousel">
                         <div class="carousel-header">
-                            <h3>💻 KI-Code-Agent</h3>
+                            <h3>💻 KI-Code-Agent Grundstruktur</h3>
                             <p>Anfang März - Mitte März 2026</p>
                         </div>
-                        <img src="images/Grok%20Image%202026-03-14%20at%207.37.32%20AM.jpeg" alt="KI-Code-Agent" class="carousel-image">
+                        <img src="images/Grok%20Image%202026-03-14%20at%207.37.32%20AM.jpeg" alt="Smart Home" class="carousel-image">
                         <div class="carousel-body">
                             <ul>
                                 <li>Automatisierte Code-Generierung</li>
@@ -628,14 +616,16 @@
                         </div>                 
                     </div>
                 </div>
+                
             </div> <!-- Ende carousel-container -->
             
             <!-- Navigation Buttons -->
             <button class="carousel-button prev" onclick="moveSlide(-1)">❮</button>
             <button class="carousel-button next" onclick="moveSlide(1)">❯</button>
+            
         </div> <!-- Ende projects-carousel -->
         
-        <!-- Dots Navigation -->
+        <!-- Dots Navigation (UNTER dem Filmstreifen) -->
         <div class="carousel-dots" id="carouselDots">
             <button class="carousel-dot active" onclick="currentSlide(0)"></button>
             <button class="carousel-dot" onclick="currentSlide(1)"></button>
@@ -644,48 +634,54 @@
             <button class="carousel-dot" onclick="currentSlide(4)"></button>
             <button class="carousel-dot" onclick="currentSlide(5)"></button>
         </div>
+        
     </div> <!-- Ende test-container -->
 
+
     <script>
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const carouselContainer = document.getElementById('projectCarousel');
-        const totalSlides = slides.length;
+    // ===== VERBESSERTES JAVASCRIPT =====
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const carouselContainer = document.getElementById('projectCarousel');
+    const totalSlides = slides.length;
 
-        function getSlideWidth() {
-            return slides[0].offsetWidth + 2;
-        }
+    function getSlideWidth() {
+        // Berechnet die aktuelle Breite inkl. Abstände
+        return slides[0].offsetWidth + 2; // +2 für border-right
+    }
 
-        function updateCarousel() {
-            const slideWidth = getSlideWidth();
-            carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function moveSlide(direction) {
-            currentIndex += direction;
-            
-            if (currentIndex < 0) {
-                currentIndex = 0;
-            } else if (currentIndex >= totalSlides) {
-                currentIndex = totalSlides - 1;
-            }
-            
-            updateCarousel();
-        }
-
-        function currentSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        window.addEventListener('resize', () => {
-            updateCarousel();
+    function updateCarousel() {
+        const slideWidth = getSlideWidth();
+        carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
         });
-    </script>
+    }
+
+    function moveSlide(direction) {
+        currentIndex += direction;
+        
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        } else if (currentIndex >= totalSlides) {
+            currentIndex = totalSlides - 1;
+        }
+        
+        updateCarousel();
+    }
+
+    function currentSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    // Wichtig: Bei Fenstergrößenänderung neu berechnen!
+    window.addEventListener('resize', () => {
+        updateCarousel();
+    });
+</script>
+
 </body>
 </html>
