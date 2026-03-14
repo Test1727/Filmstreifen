@@ -393,10 +393,32 @@
             box-shadow: 0 0 15px #3e92cc;
         }
 
-        @media (max-width: 992px) {
-            .carousel-slide {
-                min-width: calc(50% - 2px);
-            }
+
+        /* ===== DESKTOP BASIS (Standard) ===== */
+.carousel-slide {
+    width: calc(33.333% - 2px);      /* 3 Slides nebeneinander */
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+    position: relative;
+    border-right: 2px solid #ff8c42;
+    box-sizing: border-box;          /* Padding und border in der Breite enthalten */
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 992px) {
+    .carousel-slide {
+        width: calc(50% - 2px);      /* 2 Slides nebeneinander */
+    }
+}
+
+/* ===== HANDY ===== */
+@media (max-width: 768px) {
+    .carousel-slide {
+        width: calc(100% - 0px);     /* 1 Slide vollbreit */
+        border-right: none;           /* Keine Trenner mehr nötig */
+    }
+}
+
             
             .carousel-button.prev {
                 left: 5px;
@@ -411,11 +433,7 @@
             }  
         }
 
-        @media (max-width: 768px) {
-            .carousel-slide {
-                min-width: calc(100% - 0px);
-                border-right: none;
-            }
+   
             
             .carousel-button {
                 width: 35px;
