@@ -151,51 +151,57 @@
         .projects-carousel .carousel-container::after {
             display: none;
         }
+
         
-        /* Zusätzliche SAFETY FILM Schriftzüge */
-        .safety-film-left {
-            position: absolute;
-            bottom: 15px;
-            left: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-        
-        .safety-film-right {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            color: rgba(192, 168, 123, 0.7);
-            font-size: 11px;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            background: rgba(0,0,0,0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-        
-        .safety-film-center {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(192, 168, 123, 0.5);
-            font-size: 10px;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.2);
-            z-index: 8;
-            opacity: 0.5;
-        }
+        /* Zusätzliche SAFETY FILM Schriftzüge - Nur Schrift sichtbarer */
+.safety-film-left {
+    position: absolute;
+    bottom: 25px;           /* Nur Abstand geändert */
+    left: 20px;
+    color: #d4b28c;         /* Helle, warme Farbe */
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    font-weight: 500;       /* Etwas fetter */
+    text-shadow: 0 0 5px rgba(0,0,0,0.4); /* Mehr Schatten */
+    z-index: 8;
+    background: rgba(0,0,0,0.1); /* Gleicher Hintergrund */
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.safety-film-right {
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+    color: #d4b28c;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    z-index: 8;
+    background: rgba(0,0,0,0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.safety-film-center {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4b28c;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    z-index: 8;
+    background: rgba(0,0,0,0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+    opacity: 0.7;
+}
 
         .projects-carousel {
             max-width: 100%;
